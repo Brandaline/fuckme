@@ -8,7 +8,7 @@ fi
 log_file=$1
 ########################################################################
 # Here you want to check if the log file exists
-if [!-f "$log_file"]; then
+if [ ! -f "$log_file" ]; then
     echo "Error: No log file was found."
     exit 1
 fi
@@ -48,4 +48,3 @@ unique_denied_ips=$(sed -n '/DENY/ s/.* \([0-9]*\).*/\1/p' "$log_file" | sort -u
 echo "Summary Report:"
 echo "Total Attempts: $total_attempts"
 echo "Denied Attempts: $unique_denied_ips"
-1111
