@@ -4,10 +4,12 @@
 + echo 'Denied Access Attempts:'
 Denied Access Attempts:
 + uniq -c
-+ sort -rn
 + sort
++ sort -rn
 + cat -n
 + awk '$2 == "DENY" {print $3}' log_file_permissions.log
++ awk '$2 == "DENY" {print $3}' log_file_permissions.log
++ cat denied_ips.txt
 + echo 'Frequent Access Attempts (more than 5 attempts):'
 Frequent Access Attempts (more than 5 attempts):
 + cat -n
@@ -15,6 +17,8 @@ Frequent Access Attempts (more than 5 attempts):
 + uniq -c
 + sort
 + awk '$2 == "DENY" {print $3}' log_file_permissions.log
++ awk '$2 == "DENY" {print $3}' log_file_permissions.log
++ cat denied_ips.txt
 + echo 'Detected Known Malicious Signatures:'
 Detected Known Malicious Signatures:
 + grep -E '10\.10\.10\.(10|20)' log_file_permissions.log
