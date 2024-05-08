@@ -20,7 +20,7 @@ fi
 # to create a pipline that will display. Use filters to count the DENY attempts
 # and sort them by numerical value and list them in a descending order
 echo "Denied Access Attempts:"
-awk '$2 == "DENY" {print $3}' "$log_file" | sort | uniq -c | sort -rn
+awk '$2 == "DENY" {print $3}' "$log_file" | sort | uniq -c | sort -rn | cat -n
 
 #########################################################################
 # Task 3: Flag Frequent Access Attempts 
@@ -28,7 +28,7 @@ awk '$2 == "DENY" {print $3}' "$log_file" | sort | uniq -c | sort -rn
 # count them. Finally sort the attempts by numerical value and list them in discending order
 # if they are above 5
 echo "Frequent Access Attempts (more than 5 attempts):"
-awk '$2 == "DENY" {print $3}' "$log_file" | sort | uniq -c | awk '$1 > 5 {print $2}'
+awk '$2 == "DENY" {print $3}' "$log_file" | sort | uniq -c | awk '$1 > 5 {print $2}' | cat -n
 
 #########################################################################
 # Task 4: Detect Known Malicious Signatures
